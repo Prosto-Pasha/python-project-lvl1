@@ -13,6 +13,8 @@ package-install: # Установить пакет
 package-reinstall: # Переустановить пакет
 	python3 -m pip install --force-reinstall --user dist/*.whl
 
+make lint: # Проверить пакет
+	poetry run flake8 brain_games
+
 brain-games: # Запустить brain-games
 	poetry run brain-games
-
