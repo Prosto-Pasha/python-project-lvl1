@@ -1,2 +1,4 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Prosto-Pasha/python-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/Prosto-Pasha/python-project-lvl1/actions)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/1c0d8bd5113a33bf9588/maintainability)](https://codeclimate.com/github/Prosto-Pasha/python-project-lvl1/maintainability)
