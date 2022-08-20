@@ -18,3 +18,6 @@ make lint: # Проверить пакет
 
 brain-games: # Запустить brain-games
 	poetry run brain-games
+
+brain-even: # Запустить игру 'Проверка на чётность'
+	poetry run brain-even
