@@ -3,4 +3,4 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/1c0d8bd5113a33bf9588/maintainability)](https://codeclimate.com/github/Prosto-Pasha/python-project-lvl1/maintainability)
 
-[![Asciinema for 'Even Game'](https://asciinema.org/a/0bacbRVVLZKt19lDya4p156fR)
+Asciinema for 'Even Game' (https://asciinema.org/a/0bacbRVVLZKt19lDya4p156fR)
