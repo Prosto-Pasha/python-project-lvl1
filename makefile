@@ -21,3 +21,6 @@ brain-games: # Запустить brain-games
 
 brain-even: # Запустить игру 'Проверка на чётность'
 	poetry run brain-even
+
+brain-calc: # Запустить игру 'Калькулятор'
+	poetry run brain-calc
