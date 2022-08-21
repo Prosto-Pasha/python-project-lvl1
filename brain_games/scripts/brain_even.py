@@ -2,25 +2,15 @@
 
 # !/usr/bin/env python3
 
-from brain_games.cli import welcome_user
-from brain_games.even_game import start_game
-
-
-def print_hello():
-    """
-    Выводим приветствие. Знакомимся с игроком. И возвращаем его имя.
-
-    Returns:
-            string : player name
-    """
-    print('Welcome to Brain Games!')
-    return welcome_user()
+from brain_games import common_proc
+from brain_games.games import even_game
 
 
 def main():
     """Основная функция игры 'Проверка на чётность'."""
-    user_name = print_hello()
-    start_game(user_name)
+    game_rules = 'Answer "yes" if the number is even, otherwise answer "no".'
+    user_name = common_proc.welcome_user(game_rules)
+    even_game.start_game(user_name)
 
 
 if __name__ == '__main__':
