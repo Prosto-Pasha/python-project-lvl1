@@ -1,0 +1,15 @@
+[flake8]
+#
+# flake8 config file docs: https://flake8.pycqa.org/en/latest/user/configuration.html
+
+# https://pypi.org/project/flake8-noqa/
+noqa-require-code
+max-line-length = 132
+
+# it's not a bug that we aren't using all of hacking
+ignore =
+    WPS210,  # WPS210 Found too many local variables
+    WPS231,  # WPS231 Found function with too much cognitive complexity: 83 > 12
+    WPS232,  # WPS232 Found module cognitive complexity that is too high: 27.7 > 8
+    WPS421,  # WPS421 Found wrong function call: print
+    S311,  # S311 Standard pseudo-random generators are not suitable for security/cryptographic purposes.
