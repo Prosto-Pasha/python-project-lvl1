@@ -48,30 +48,26 @@ def find_answer(answer_type):
     return user_answer
 
 
-def compare_answers(user_answer, correct_answer):
+def check_answer(user_answer, correct_answer, user_name):
     """
-    Узнать ответ игрока.
+    Проверить ответ игрока и вернуть 'вес' ответа.
 
     Parameters:
         user_answer : произвольный : ответ игрока.
         correct_answer : произвольный : правильный ответ.
+        user_name : строка : имя игрока.
 
     Returns:
-            bool : результат сравнения ответа игрока с правильным ответом
+            integer : 'вес' ответа игрока. 1 - правильный ответ, 100 - неправильный ответ
     """
-    return user_answer == correct_answer
-
-
-def wrong_answer_report(user_answer, correct_answer):
-    """
-    Сообщить о неправильном ответе игрока.
-
-    Parameters:
-        user_answer : произвольный : ответ игрока.
-        correct_answer : произвольный : правильный ответ.
-    """
+    if user_answer == correct_answer:  # Сравниваем ответ игрока и правильный ответ
+        print('Correct!')
+        return 1  # 'Вес' правильного ответа
+    # Неправильный ответ
     wrong_answer = "'{0}' is wrong answer ;(. Correct answer was '{1}'"
     print(wrong_answer.format(user_answer, correct_answer))
+    print("Let's try again, {0}!".format(user_name))
+    return 100  # 'Вес' неправильного ответа
 
 
 def greet_user(user_name):
