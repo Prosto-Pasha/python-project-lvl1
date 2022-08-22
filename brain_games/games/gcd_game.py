@@ -41,12 +41,6 @@ def start_game(user_name):
         common_proc.ask_question(question_text)  # Задаём вопрос пользователю
         user_answer = common_proc.find_answer('integer')  # Узнаём ответ пользователя
         correct_answer = euqlid_gcd(number1, number2)  # Вычисляем правильный ответ
-        if common_proc.compare_answers(user_answer, correct_answer):  # Сравниваем ответ игрока и правильный ответ
-            print('Correct!')
-            number_of_correct_answers += 1  # Увеличиваем счётчик правильных ответов
-        else:
-            common_proc.wrong_answer_report(user_answer, correct_answer)  # Сообщим о неправильном ответе
-            print("Let's try again, {0}!".format(user_name))
-            break  # Завершаем игру при неправильном ответе
+        number_of_correct_answers += common_proc.check_answer(user_answer, correct_answer, user_name)
     if number_of_correct_answers == 3:  # Поздравим пользователя при трёх правильных ответах
         common_proc.greet_user(user_name)
