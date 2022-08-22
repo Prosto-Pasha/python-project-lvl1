@@ -5,9 +5,70 @@ from random import choice, randint
 from brain_games import common_proc
 
 
+def oper_sum(param1, param2):
+    """
+    Операция сложения.
+
+    Parameters:
+        param1 : integer, первое слогаемое.
+        param2 : integer, второе слогаемое.
+
+    Returns:
+        tuple : кортеж с двумя слагаемыми и правильным ответом
+    """
+    return (param1, param2, param1 + param2)
+
+
+def oper_subtr(param1, param2):
+    """
+    Операция вычитания.
+
+    Parameters:
+        param1 : integer, первый параметр.
+        param2 : integer, второй параметр.
+
+    Returns:
+        tuple : кортеж с уменьшаемым, вычитаемым и разностью
+    """
+    if param1 < param2:
+        param1, param2 = param2, param1
+    correct_answer = param1 - param2
+    return (param1, param2, correct_answer)
+
+
+def oper_multiply(param1, param2):
+    """
+    Операция умножения.
+
+    Parameters:
+        param1 : integer, первый множитель.
+        param2 : integer, второй множитель.
+
+    Returns:
+        tuple : кортеж с двумя множителями и произведением
+    """
+    return (param1, param2, param1 * param2)
+
+
+def oper_division(param2):
+    """
+    Операция деления.
+
+    Parameters:
+        param2 : integer, делитель.
+
+    Returns:
+        tuple : кортеж с делимым, делителем и частным
+    """
+    max_number3 = 50  # Максимальное значение числа для деления
+    expr_result = randint(1, max_number3)  # Число от 1 до 50
+    param1 = expr_result * param2
+    return (param1, param2, expr_result)
+
+
 def get_numbers(current_oper):
     """
-    Получить параметры для текущей арифметической опреации.
+    Получить параметры для текущей арифметической операции.
 
     Parameters:
         current_oper : строка, текущая арифметическая операция.
@@ -31,26 +92,16 @@ def get_numbers(current_oper):
     """
     max_number = 100  # Максимальное значение числа
     max_number2 = 10  # Максимальное значение числа для умножения и деления
-    max_number3 = 50  # Максимальное значение числа для деления
     param1 = randint(0, max_number)  # Первый элемент для результата функции (от 0 до 100)
     param2 = randint(0, max_number)  # Второй элемент для результата функции (от 0 до 100)
-    param3 = randint(0, max_number2)  # Элемент для функций умножения и деления (от 0 до 10)
-    correct_answer = 0  # Правильный результат функции
-    if current_oper == '+':
-        correct_answer = param1 + param2
-    elif current_oper == '-':
-        if param1 < param2:
-            param1, param2 = param2, param1
-        correct_answer = param1 - param2
-    elif current_oper == '*':
-        param2 = param3
-        correct_answer = param1 * param2
-    elif current_oper == '/':
-        expr_result = randint(0, max_number3)  # Число от 0 до 50
-        param2 = param3
-        param1 = expr_result * param2
-        correct_answer = param1 / param2
-    return (param1, param2, correct_answer)
+    param3 = randint(1, max_number2)  # Элемент для функций умножения и деления (от 1 до 10)
+    all_operations = {
+        '+': oper_sum(param1, param2),
+        '-': oper_subtr(param1, param2),
+        '*': oper_multiply(param1, param3),
+        '/': oper_division(param3),
+    }
+    return all_operations.get(current_oper)
 
 
 def start_game(user_name):
