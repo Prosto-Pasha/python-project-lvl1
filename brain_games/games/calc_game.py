@@ -32,8 +32,7 @@ def oper_subtr(param1, param2):
     """
     if param1 < param2:
         param1, param2 = param2, param1
-    correct_answer = param1 - param2
-    return (param1, param2, correct_answer)
+    return (param1, param2, param1 - param2)
 
 
 def oper_multiply(param1, param2):
@@ -62,8 +61,7 @@ def oper_division(param2):
     """
     max_number3 = 50  # Максимальное значение числа для деления
     expr_result = randint(1, max_number3)  # Число от 1 до 50
-    param1 = expr_result * param2
-    return (param1, param2, expr_result)
+    return (expr_result * param2, param2, expr_result)
 
 
 def get_numbers(current_oper):
