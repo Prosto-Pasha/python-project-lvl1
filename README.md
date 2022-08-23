@@ -8,3 +8,5 @@ Asciinema for 'Even Game' (https://asciinema.org/a/0bacbRVVLZKt19lDya4p156fR)
 Asciinema for 'Calc Game' (https://asciinema.org/a/OgaMCsJ4LKT9TRSlLs9Plv6vQ)
 
 Asciinema for 'Greatest Common Divisor (GCD) Game' (https://asciinema.org/a/6GVaneUItPZUYjLdzYA03vAbU)
+
+Asciinema for 'Progression Game' (https://asciinema.org/a/t9C991jUBwC9Tf5QNQ7q25ZVV)
