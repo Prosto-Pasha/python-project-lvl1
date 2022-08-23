@@ -58,9 +58,12 @@ def check_answer(user_answer, correct_answer, user_name):
         user_name : строка : имя игрока.
 
     Returns:
-            integer : 'вес' ответа игрока. 1 - правильный ответ, 100 - неправильный ответ
+            integer : 'вес' ответа игрока.
+                    1 - правильный ответ,
+                    100 - неправильный ответ
     """
-    if user_answer == correct_answer:  # Сравниваем ответ игрока и правильный ответ
+    # Сравниваем ответ игрока и правильный ответ
+    if user_answer == correct_answer:
         print('Correct!')
         return 1  # 'Вес' правильного ответа
     # Неправильный ответ
