@@ -72,7 +72,8 @@ def get_numbers(current_oper):
         current_oper : строка, текущая арифметическая операция.
 
     Returns:
-        tuple : кортеж с двумя параметрами и правильным ответом для текущей операции
+        tuple : кортеж с двумя параметрами
+         и правильным ответом для текущей операции
 
     Для операции сложения '+' выбираются два случайных числа от 0 до 100.
 
@@ -90,9 +91,12 @@ def get_numbers(current_oper):
     """
     max_number = 100  # Максимальное значение числа
     max_number2 = 10  # Максимальное значение числа для умножения и деления
-    param1 = randint(0, max_number)  # Первый элемент для результата функции (от 0 до 100)
-    param2 = randint(0, max_number)  # Второй элемент для результата функции (от 0 до 100)
-    param3 = randint(1, max_number2)  # Элемент для функций умножения и деления (от 1 до 10)
+    # Первый элемент для результата функции (от 0 до 100)
+    param1 = randint(0, max_number)
+    # Второй элемент для результата функции (от 0 до 100)
+    param2 = randint(0, max_number)
+    # Элемент для функций умножения и деления (от 1 до 10)
+    param3 = randint(1, max_number2)
     all_operations = {
         '+': oper_sum(param1, param2),
         '-': oper_subtr(param1, param2),
@@ -112,15 +116,28 @@ def start_game(user_name):
     number_of_correct_answers = 0  # Счётчик правильных ответов
     number_of_rounds = 3  # Число раундов игры, необходимое для победы
     opers = ('+', '-', '*', '/')  # Арифмитические операции игры
-    opers = ('+', '-', '*')  # Арифмитические операции без деления, для успешного прохождения тестов :)
-    while number_of_correct_answers < number_of_rounds:  # Если правильных ответов меньше трёх, то продолжаем игру
+    # Арифмитические операции без деления, для успешного прохождения тестов :)
+    opers = ('+', '-', '*')
+    # Если правильных ответов меньше трёх, то продолжаем игру
+    while number_of_correct_answers < number_of_rounds:
         current_oper = choice(opers)  # Текущая арифметическая операция
-        first_number, second_number, correct_answer = get_numbers(current_oper)  # Получим значения для текущей операции
+        # Получим значения для текущей операции
+        first_number, second_number, correct_answer = get_numbers(current_oper)
         first_number_str = str(first_number)
         second_number_str = str(second_number)
-        question_text = '{0} {1} {2}'.format(first_number_str, current_oper, second_number_str)
+        question_text = '{0} {1} {2}'.format(
+            first_number_str,
+            current_oper,
+            second_number_str,
+        )
         common_proc.ask_question(question_text)  # Задаём вопрос пользователю
-        user_answer = common_proc.find_answer('integer')  # Узнаём ответ пользователя
-        number_of_correct_answers += common_proc.check_answer(user_answer, correct_answer, user_name)
-    if number_of_correct_answers == 3:  # Поздравим пользователя при трёх правильных ответах
+        # Узнаём ответ пользователя
+        user_answer = common_proc.find_answer('integer')
+        number_of_correct_answers += common_proc.check_answer(
+            user_answer,
+            correct_answer,
+            user_name,
+        )
+    # Поздравим пользователя при трёх правильных ответах
+    if number_of_correct_answers == 3:
         common_proc.greet_user(user_name)
