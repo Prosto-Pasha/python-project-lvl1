@@ -30,3 +30,6 @@ brain-gcd: # Запустить игру 'Наибольший общий дел
 
 brain-progression: # Запустить игру 'Арифметическая прогрессия'
 	poetry run brain-progression
+
+brain-prime: # Запустить игру 'Простое ли число?'
+	poetry run brain-prime
