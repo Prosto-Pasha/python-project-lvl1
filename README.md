@@ -10,3 +10,5 @@ Asciinema for 'Calc Game' (https://asciinema.org/a/OgaMCsJ4LKT9TRSlLs9Plv6vQ)
 Asciinema for 'Greatest Common Divisor (GCD) Game' (https://asciinema.org/a/6GVaneUItPZUYjLdzYA03vAbU)
 
 Asciinema for 'Progression Game' (https://asciinema.org/a/t9C991jUBwC9Tf5QNQ7q25ZVV)
+
+Asciinema for 'Prime Game' (https://asciinema.org/a/4RJFb4w21toMffp2jjfR3bkjZ)
