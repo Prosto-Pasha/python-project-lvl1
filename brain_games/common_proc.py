@@ -13,7 +13,7 @@ def welcome_user(game_rules):
     Returns:
         string : player name
     """
-    print('Welcome to Brain Games!')
+    print('Welcome to the Brain Games!')
     name = prompt.string('May I have your name? ')
     print('Hello, {0}!'.format(name))
     print(game_rules)
