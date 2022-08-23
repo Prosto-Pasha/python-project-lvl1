@@ -27,3 +27,6 @@ brain-calc: # Запустить игру 'Калькулятор'
 
 brain-gcd: # Запустить игру 'Наибольший общий делитель'
 	poetry run brain-gcd
+
+brain-progression: # Запустить игру 'Арифметическая прогрессия'
+	poetry run brain-progression
