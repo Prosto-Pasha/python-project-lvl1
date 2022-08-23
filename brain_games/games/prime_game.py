@@ -1,10 +1,9 @@
 """Логика игры 'Простое ли число?'."""
 
+import math
 from random import randint
 
 from brain_games import common_proc
-
-import math
 
 
 def is_simple(number):
