@@ -4,7 +4,7 @@
 
 # https://pypi.org/project/flake8-noqa/
 noqa-require-code
-max-line-length = 132
+max-line-length = 80
 
 # it's not a bug that we aren't using all of hacking
 ignore =
