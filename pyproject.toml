@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "The Brain Games"
+name = "hexlet-code"
 version = "0.1.0"
-description = "Five simple math games"
+description = ""
 authors = ["Pavel Belyavskiy <prostopasha@gmail.com>"]
 classifiers = ["Topic :: Software Development"]
 readme = "README.md"
