@@ -18,9 +18,9 @@ def get_round(length_of_progression):
     """
     # Максимальное значение первого числа в прогрессиии
     max_first_number = 20
+    max_step = 10  # Максимальный шаг прогрессии
     # Первое число в прогрессии от 1 до 20
     first_number = randint(1, max_first_number)
-    max_step = 10  # Максимальный шаг прогрессии
     step = randint(1, max_step)  # Шаг прогрессии от 1 до 10
     # Последнее число в прогрессии
     last_number = first_number + length_of_progression * step
