@@ -59,8 +59,8 @@ def oper_division(param2):
     Returns:
         tuple : кортеж с делимым, делителем и частным
     """
-    max_number3 = 50  # Максимальное значение числа для деления
-    expr_result = randint(1, max_number3)  # Число от 1 до 50
+    max_number = 50  # Максимальное значение числа для деления
+    expr_result = randint(1, max_number)  # Число от 1 до 50
     return (expr_result * param2, param2, expr_result)
 
 
