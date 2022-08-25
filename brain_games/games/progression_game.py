@@ -10,27 +10,13 @@ ANSWER_TYPE = 'integer'
 
 def get_question_answer():
     """
-    Получить вопрос и правильный ответ.
-
-    Returns:
-        tuple : кортеж с текстом вопроса и правильным ответом
-    """
-    length_of_progression = randint(5, 10)  # Длина прогрессии от 5 до 10 чисел
-    question_text, correct_answer = get_round(length_of_progression)
-    return (question_text, correct_answer)
-
-
-def get_round(length_of_progression):
-    """
     Получить текст вопроса и правильный ответ для очередного раунда.
-
-    Parameters:
-        length_of_progression : integer, количество цифр в прогрессии.
 
     Returns:
         tuple : кортеж с двумя элементами.
             Строка с вопросом и число - правильный ответ.
     """
+    length_of_progression = randint(5, 10)  # Длина прогрессии от 5 до 10 чисел
     # Максимальное значение первого числа в прогрессиии
     max_first_number = 20
     max_step = 10  # Максимальный шаг прогрессии
