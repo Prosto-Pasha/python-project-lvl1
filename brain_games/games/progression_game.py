@@ -2,7 +2,22 @@
 
 from random import randint
 
-from brain_games import common_proc
+# Правила игры
+RULES = 'What number is missing in the progression?'
+# Тип ответа (строка или число)
+ANSWER_TYPE = 'integer'
+
+
+def get_question_answer():
+    """
+    Получить вопрос и правильный ответ.
+
+    Returns:
+        tuple : кортеж с текстом вопроса и правильным ответом
+    """
+    length_of_progression = randint(5, 10)  # Длина прогрессии от 5 до 10 чисел
+    question_text, correct_answer = get_round(length_of_progression)
+    return (question_text, correct_answer)
 
 
 def get_round(length_of_progression):
@@ -32,29 +47,3 @@ def get_round(length_of_progression):
     # Преобразуем список в строку
     question_text = ' '.join(map(str, progression_list))
     return (question_text, correct_answer)
-
-
-def start_game(user_name):
-    """
-    Игра 'Арифметическая прогрессия'.
-
-    Parameters:
-        user_name : строка, имя игрока.
-    """
-    number_of_correct_answers = 0  # Счётчик правильных ответов
-    number_of_rounds = 3  # Число раундов игры, необходимое для победы
-    length_of_progression = randint(5, 10)  # Длина прогрессии от 5 до 10 чисел
-    # Если правильных ответов меньше трёх, то продолжаем игру
-    while number_of_correct_answers < number_of_rounds:
-        question_text, correct_answer = get_round(length_of_progression)
-        common_proc.ask_question(question_text)  # Задаём вопрос пользователю
-        # Узнаём ответ пользователя
-        user_answer = common_proc.find_answer('integer')
-        number_of_correct_answers += common_proc.check_answer(
-            user_answer,
-            correct_answer,
-            user_name,
-        )
-    # Поздравим пользователя при трёх правильных ответах
-    if number_of_correct_answers == 3:
-        common_proc.greet_user(user_name)
