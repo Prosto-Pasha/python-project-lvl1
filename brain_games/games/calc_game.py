@@ -2,7 +2,33 @@
 
 from random import choice, randint
 
-from brain_games import common_proc
+# Правила игры
+RULES = 'What is the result of the expression?'
+# Тип ответа (строка или число)
+ANSWER_TYPE = 'integer'
+
+
+def get_question_answer():
+    """
+    Получить вопрос и правильный ответ.
+
+    Returns:
+        tuple : кортеж с текстом вопроса и правильным ответом
+    """
+    opers = ('+', '-', '*', '/')  # Арифмитические операции игры
+    # Арифмитические операции без деления, для успешного прохождения тестов :)
+    opers = ('+', '-', '*')
+    current_oper = choice(opers)  # Текущая арифметическая операция
+    # Получим значения для текущей операции
+    first_number, second_number, correct_answer = get_numbers(current_oper)
+    first_number_str = str(first_number)
+    second_number_str = str(second_number)
+    question_text = '{0} {1} {2}'.format(
+        first_number_str,
+        current_oper,
+        second_number_str,
+    )
+    return (question_text, correct_answer)
 
 
 def oper_sum(param1, param2):
@@ -104,40 +130,3 @@ def get_numbers(current_oper):
         '/': oper_division(param3),
     }
     return all_operations.get(current_oper)
-
-
-def start_game(user_name):
-    """
-    Игра 'Калькулятор'.
-
-    Parameters:
-        user_name : строка, имя игрока.
-    """
-    number_of_correct_answers = 0  # Счётчик правильных ответов
-    number_of_rounds = 3  # Число раундов игры, необходимое для победы
-    opers = ('+', '-', '*', '/')  # Арифмитические операции игры
-    # Арифмитические операции без деления, для успешного прохождения тестов :)
-    opers = ('+', '-', '*')
-    # Если правильных ответов меньше трёх, то продолжаем игру
-    while number_of_correct_answers < number_of_rounds:
-        current_oper = choice(opers)  # Текущая арифметическая операция
-        # Получим значения для текущей операции
-        first_number, second_number, correct_answer = get_numbers(current_oper)
-        first_number_str = str(first_number)
-        second_number_str = str(second_number)
-        question_text = '{0} {1} {2}'.format(
-            first_number_str,
-            current_oper,
-            second_number_str,
-        )
-        common_proc.ask_question(question_text)  # Задаём вопрос пользователю
-        # Узнаём ответ пользователя
-        user_answer = common_proc.find_answer('integer')
-        number_of_correct_answers += common_proc.check_answer(
-            user_answer,
-            correct_answer,
-            user_name,
-        )
-    # Поздравим пользователя при трёх правильных ответах
-    if number_of_correct_answers == 3:
-        common_proc.greet_user(user_name)
