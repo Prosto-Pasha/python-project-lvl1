@@ -23,8 +23,24 @@ To install package run:
 1) _poetry install_
 2) _make package-install_
 3) Now you can run the desired game:
-   1) _brain-even_ for 'The Even Game'. [Asciinema for 'Even Game'](https://asciinema.org/a/WBYH1MC33YXTn6JHZREfyVuCc)
-   2) _brain-calc_ for 'The Calc Game'. [Asciinema for 'Calc Game'](https://asciinema.org/a/4RKSJtKqwkHZAbbwj18aGrsPu)
-   3) _brain-gcd_ for 'The Greatest Common Divisor (GCD) Game'. [Asciinema for 'Greatest Common Divisor (GCD) Game'](https://asciinema.org/a/mEeikzboMyiGT7Po8XvI7yKff)
-   4) _brain-progression_ for 'The Progression Game'. [Asciinema for 'Progression Game'](https://asciinema.org/a/yOn91fVQw9870n42sySlqMq0r) 
-   5) _brain-prime_ for 'The Prime Game'. [Asciinema for 'Prime Game'](https://asciinema.org/a/WtX5WWiz2iFBGdCrsbmoXwXbP)
+
+   
+_brain-even_ for 'The Even Game':
+    
+[![asciicast](https://asciinema.org/a/WBYH1MC33YXTn6JHZREfyVuCc.svg)](https://asciinema.org/a/WBYH1MC33YXTn6JHZREfyVuCc)
+ 
+_brain-calc_ for 'The Calc Game':
+
+[![asciicast](https://asciinema.org/a/4RKSJtKqwkHZAbbwj18aGrsPu.svg)](https://asciinema.org/a/4RKSJtKqwkHZAbbwj18aGrsPu)
+
+_brain-gcd_ for 'The Greatest Common Divisor (GCD) Game':
+
+[![asciicast](https://asciinema.org/a/mEeikzboMyiGT7Po8XvI7yKff.svg)](https://asciinema.org/a/mEeikzboMyiGT7Po8XvI7yKff)
+
+_brain-progression_ for 'The Progression Game':
+
+[![asciicast](https://asciinema.org/a/yOn91fVQw9870n42sySlqMq0r.svg)](https://asciinema.org/a/yOn91fVQw9870n42sySlqMq0r)
+
+_brain-prime_ for 'The Prime Game':
+
+[![asciicast](https://asciinema.org/a/WtX5WWiz2iFBGdCrsbmoXwXbP.svg)](https://asciinema.org/a/WtX5WWiz2iFBGdCrsbmoXwXbP)
