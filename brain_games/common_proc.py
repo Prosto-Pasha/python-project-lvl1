@@ -2,6 +2,34 @@
 
 import prompt
 
+NUMBER_OF_ROUNDS = 3  # Число раундов игры, необходимое для победы
+
+
+def start_game(game):
+    """
+    Знакомимся с игроком и приветствуем его.
+
+    Parameters:
+        game : модуль игры.
+    """
+    user_name = welcome_user(game.RULES)
+    number_of_correct_answers = 0  # Счётчик правильных ответов
+    # Если правильных ответов меньше необходимого, то продолжаем игру
+    while number_of_correct_answers < NUMBER_OF_ROUNDS:
+        # Получим текст вопроса и правильный ответ
+        question_text, correct_answer = game.get_question_answer()
+        ask_question(question_text)  # Задаём вопрос пользователю
+        # Узнаём ответ пользователя
+        user_answer = find_answer(game.ANSWER_TYPE)
+        number_of_correct_answers += check_answer(
+            user_answer,
+            correct_answer,
+            user_name,
+        )
+    # Поздравим пользователя при необходимом количестве правильных ответов
+    if number_of_correct_answers == 3:
+        greet_user(user_name)
+
 
 def welcome_user(game_rules):
     """
