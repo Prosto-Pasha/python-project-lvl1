@@ -3,7 +3,21 @@
 import math
 from random import randint
 
-from brain_games import common_proc
+# Правила игры
+RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".'
+# Тип ответа (строка или число)
+ANSWER_TYPE = 'string'
+
+
+def get_question_answer():
+    """
+    Получить вопрос и правильный ответ.
+
+    Returns:
+        tuple : кортеж с текстом вопроса и правильным ответом
+    """
+    question_text, correct_answer = get_round()
+    return (question_text, correct_answer)
 
 
 def is_simple(number):
@@ -37,28 +51,3 @@ def get_round():
     question_number = randint(1, max_number)  # Число - вопрос от 1 до 1000
     correct_answer = is_simple(question_number)
     return (question_number, correct_answer)
-
-
-def start_game(user_name):
-    """
-    Игра 'Простое ли число?'.
-
-    Parameters:
-        user_name : строка, имя игрока.
-    """
-    number_of_correct_answers = 0  # Счётчик правильных ответов
-    number_of_rounds = 3  # Число раундов игры, необходимое для победы
-    # Если правильных ответов меньше трёх, то продолжаем игру
-    while number_of_correct_answers < number_of_rounds:
-        question_text, correct_answer = get_round()
-        common_proc.ask_question(question_text)  # Задаём вопрос пользователю
-        # Узнаём ответ пользователя
-        user_answer = common_proc.find_answer('string')
-        number_of_correct_answers += common_proc.check_answer(
-            user_answer,
-            correct_answer,
-            user_name,
-        )
-    # Поздравим пользователя при трёх правильных ответах
-    if number_of_correct_answers == 3:
-        common_proc.greet_user(user_name)
