@@ -2,31 +2,20 @@
 
 from random import randint
 
-from brain_games import common_proc
+# Правила игры
+RULES = 'Answer "yes" if the number is even, otherwise answer "no".'
+# Тип ответа (строка или число)
+ANSWER_TYPE = 'string'
 
 
-def start_game(user_name):
+def get_question_answer():
     """
-    Игра 'Проверка на чётность'.
+    Получить вопрос и правильный ответ.
 
-    Parameters:
-        user_name : строка, имя игрока.
+    Returns:
+        tuple : кортеж с текстом вопроса и правильным ответом
     """
-    number_of_correct_answers = 0  # Счётчик правильных ответов
-    number_of_rounds = 3  # Число раундов игры, необходимое для победы
-    # Если правильных ответов меньше трёх, то продолжаем игру
-    while number_of_correct_answers < number_of_rounds:
-        number = randint(0, 1000)  # Случайное целое число от 0 до 1000
-        common_proc.ask_question(number)  # Задаём вопрос пользователю
-        # Узнаём ответ пользователя
-        user_answer = common_proc.find_answer('string')
-        # Вычисляем правильный ответ
-        correct_answer = 'yes' if number % 2 == 0 else 'no'
-        number_of_correct_answers += common_proc.check_answer(
-            user_answer,
-            correct_answer,
-            user_name,
-        )
-    # Поздравим пользователя при трёх правильных ответах
-    if number_of_correct_answers == 3:
-        common_proc.greet_user(user_name)
+    number = randint(0, 1000)  # Случайное целое число от 0 до 1000
+    # Вычисляем правильный ответ
+    correct_answer = 'yes' if number % 2 == 0 else 'no'
+    return (str(number), correct_answer)
