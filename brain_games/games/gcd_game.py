@@ -4,8 +4,8 @@ from random import randint
 
 # Правила игры
 RULES = 'Find the greatest common divisor of given numbers.'
-# Тип ответа (строка или число)
-ANSWER_TYPE = 'integer'
+MIN_NUMBER = 1  # Минимальное значение числа
+MAX_NUMBER = 150  # Максимальное значение числа
 
 
 def get_question_answer():
@@ -15,13 +15,12 @@ def get_question_answer():
     Returns:
         tuple : кортеж с текстом вопроса и правильным ответом
     """
-    max_number = 150  # Максимальное число
-    number1 = randint(0, max_number)  # Случайное целое число от 1 до 150
-    number2 = randint(0, max_number)  # Случайное целое число от 1 до 150
+    number1 = randint(MIN_NUMBER, MAX_NUMBER)  # Случайное целое число
+    number2 = randint(MIN_NUMBER, MAX_NUMBER)  # Случайное целое число
     question_text = '{0} {1}'.format(number1, number2)
     # Вычисляем правильный ответ
     correct_answer = euqlid_gcd(number1, number2)
-    return (question_text, correct_answer)
+    return question_text, str(correct_answer)
 
 
 def euqlid_gcd(number1, number2):
