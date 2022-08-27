@@ -3,40 +3,42 @@
 import prompt
 
 NUMBER_OF_ROUNDS = 3  # Число раундов игры, необходимое для победы
+CORRECT_ANSWER_WEIGHT = 1  # 'Вес' правильного ответа
+WRONG_ANSWER_WEIGHT = NUMBER_OF_ROUNDS + 1  # 'Вес' неправильного ответа
 
 
 def start_game(game):
     """
-    Знакомимся с игроком и приветствуем его.
+    Основная процедура запуска игры.
 
     Parameters:
         game : модуль игры.
     """
-    user_name = welcome_user(game.RULES)
+    player_name = welcome_player()
+    # Выводим правила игры
+    print(game.RULES)
     number_of_correct_answers = 0  # Счётчик правильных ответов
     # Если правильных ответов меньше необходимого, то продолжаем игру
     while number_of_correct_answers < NUMBER_OF_ROUNDS:
         # Получим текст вопроса и правильный ответ
         question_text, correct_answer = game.get_question_answer()
-        ask_question(question_text)  # Задаём вопрос пользователю
-        # Узнаём ответ пользователя
-        user_answer = find_answer(game.ANSWER_TYPE)
+        # Задаём вопрос игроку
+        print('Question: {0}'.format(question_text))
+        # Узнаём ответ игрока
+        player_answer = prompt.string('Your answer: ')
         number_of_correct_answers += check_answer(
-            user_answer,
+            player_answer,
             correct_answer,
-            user_name,
+            player_name,
         )
-    # Поздравим пользователя при необходимом количестве правильных ответов
+    # Поздравим игрока при необходимом количестве правильных ответов
     if number_of_correct_answers == 3:
-        greet_user(user_name)
+        print('Congratulations, {0}!'.format(player_name))
 
 
-def welcome_user(game_rules):
+def welcome_player():
     """
     Знакомимся с игроком и приветствуем его.
-
-    Parameters:
-        game_rules : строка, правила игры.
 
     Returns:
         string : player name
@@ -44,68 +46,28 @@ def welcome_user(game_rules):
     print('Welcome to the Brain Games!')
     name = prompt.string('May I have your name? ')
     print('Hello, {0}!'.format(name))
-    print(game_rules)
     return name
 
 
-def ask_question(question):
+def check_answer(player_answer, correct_answer, player_name):
     """
-    Задать вопрос.
+    Проверить ответ игрока, вывести результат проверки и вернуть 'вес' ответа.
 
     Parameters:
-        question : строка, текст вопроса.
-    """
-    print('Question: {0}'.format(question))
-
-
-def find_answer(answer_type):
-    """
-    Узнать ответ игрока.
-
-    Parameters:
-        answer_type : строка, тип значения ответа.
-
-    Returns:
-            string : ответ игрока
-    """
-    user_answer = ''
-    if answer_type == 'string':
-        user_answer = prompt.string('Your answer: ')
-    elif answer_type == 'integer':
-        user_answer = prompt.integer('Your answer: ')
-    return user_answer
-
-
-def check_answer(user_answer, correct_answer, user_name):
-    """
-    Проверить ответ игрока и вернуть 'вес' ответа.
-
-    Parameters:
-        user_answer : произвольный : ответ игрока.
-        correct_answer : произвольный : правильный ответ.
-        user_name : строка : имя игрока.
+        player_answer : строка : ответ игрока.
+        correct_answer : строка : правильный ответ.
+        player_name : строка : имя игрока.
 
     Returns:
             integer : 'вес' ответа игрока.
-                    1 - правильный ответ,
-                    100 - неправильный ответ
     """
     # Сравниваем ответ игрока и правильный ответ
-    if user_answer == correct_answer:
+    if player_answer == correct_answer:
+        # Правильный ответ
         print('Correct!')
-        return 1  # 'Вес' правильного ответа
+        return CORRECT_ANSWER_WEIGHT
     # Неправильный ответ
     wrong_answer = "'{0}' is wrong answer ;(. Correct answer was '{1}'"
-    print(wrong_answer.format(user_answer, correct_answer))
-    print("Let's try again, {0}!".format(user_name))
-    return 100  # 'Вес' неправильного ответа
-
-
-def greet_user(user_name):
-    """
-    Поздравить игрока с победой.
-
-    Parameters:
-        user_name : строка, имя игрока.
-    """
-    print('Congratulations, {0}!'.format(user_name))
+    print(wrong_answer.format(player_answer, correct_answer))
+    print("Let's try again, {0}!".format(player_name))
+    return WRONG_ANSWER_WEIGHT
