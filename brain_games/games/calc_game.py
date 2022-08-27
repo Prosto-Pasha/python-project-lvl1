@@ -4,8 +4,11 @@ from random import choice, randint
 
 # Правила игры
 RULES = 'What is the result of the expression?'
-# Тип ответа (строка или число)
-ANSWER_TYPE = 'integer'
+MAX_NUMBER1 = 100  # Максимальное значение числа
+MAX_NUMBER2 = 10  # Максимальное значение числа для умножения и деления
+MAX_NUMBER3 = 50  # Максимальное значение числа для деления
+MIN_NUMBER1 = 0  # Минимальное значение числа
+MIN_NUMBER2 = 1  # Минимальное значение числа для умножения и деления
 
 
 def get_question_answer():
@@ -15,10 +18,12 @@ def get_question_answer():
     Returns:
         tuple : кортеж с текстом вопроса и правильным ответом
     """
-    opers = ('+', '-', '*', '/')  # Арифмитические операции игры
+    # Арифмитические операции игры
+    opers = ('+', '-', '*', '/')
     # Арифмитические операции без деления, для успешного прохождения тестов :)
     opers = ('+', '-', '*')
-    current_oper = choice(opers)  # Текущая арифметическая операция
+    # Текущая арифметическая операция
+    current_oper = choice(opers)
     # Получим значения для текущей операции
     first_number, second_number, correct_answer = get_numbers(current_oper)
     first_number_str = str(first_number)
@@ -28,7 +33,33 @@ def get_question_answer():
         current_oper,
         second_number_str,
     )
-    return (question_text, correct_answer)
+    return question_text, str(correct_answer)
+
+
+def get_numbers(current_oper):
+    """
+    Получить параметры для текущей арифметической операции.
+
+    Parameters:
+        current_oper : строка, текущая арифметическая операция.
+
+    Returns:
+        tuple : кортеж с двумя параметрами
+         и правильным ответом для текущей операции
+    """
+    # Первый элемент для результата функции
+    param1 = randint(MIN_NUMBER1, MAX_NUMBER1)
+    # Второй элемент для результата функции
+    param2 = randint(MIN_NUMBER1, MAX_NUMBER1)
+    # Элемент для функций умножения и деления
+    param3 = randint(MIN_NUMBER2, MAX_NUMBER2)
+    all_operations = {
+        '+': oper_sum(param1, param2),
+        '-': oper_subtr(param1, param2),
+        '*': oper_multiply(param1, param3),
+        '/': oper_division(param3),
+    }
+    return all_operations.get(current_oper)
 
 
 def oper_sum(param1, param2):
@@ -42,7 +73,7 @@ def oper_sum(param1, param2):
     Returns:
         tuple : кортеж с двумя слагаемыми и правильным ответом
     """
-    return (param1, param2, param1 + param2)
+    return param1, param2, param1 + param2
 
 
 def oper_subtr(param1, param2):
@@ -58,7 +89,7 @@ def oper_subtr(param1, param2):
     """
     if param1 < param2:
         param1, param2 = param2, param1
-    return (param1, param2, param1 - param2)
+    return param1, param2, param1 - param2
 
 
 def oper_multiply(param1, param2):
@@ -72,7 +103,7 @@ def oper_multiply(param1, param2):
     Returns:
         tuple : кортеж с двумя множителями и произведением
     """
-    return (param1, param2, param1 * param2)
+    return param1, param2, param1 * param2
 
 
 def oper_division(param2):
@@ -85,48 +116,5 @@ def oper_division(param2):
     Returns:
         tuple : кортеж с делимым, делителем и частным
     """
-    max_number = 50  # Максимальное значение числа для деления
-    expr_result = randint(1, max_number)  # Число от 1 до 50
-    return (expr_result * param2, param2, expr_result)
-
-
-def get_numbers(current_oper):
-    """
-    Получить параметры для текущей арифметической операции.
-
-    Parameters:
-        current_oper : строка, текущая арифметическая операция.
-
-    Returns:
-        tuple : кортеж с двумя параметрами
-         и правильным ответом для текущей операции
-
-    Для операции сложения '+' выбираются два случайных числа от 0 до 100.
-
-    Для операции вычитания '-' выбираются два случайных числа от 0 до 100.
-    Первое число должно быть больше второго.
-
-    Для операции умножения '*' выбираются два случайных числа.
-    Первое число от 0 до 100. Второе число от 0 до 10.
-
-    Для операции деления '/' выбираются два случайных числа.
-    Первое число от 0 до 50. Второе число от 0 до 10.
-    Делимое определяем умножением первого и второго чисел.
-    Второе число будет делителем.
-    Возвращаем делимое и второе число.
-    """
-    max_number = 100  # Максимальное значение числа
-    max_number2 = 10  # Максимальное значение числа для умножения и деления
-    # Первый элемент для результата функции (от 0 до 100)
-    param1 = randint(0, max_number)
-    # Второй элемент для результата функции (от 0 до 100)
-    param2 = randint(0, max_number)
-    # Элемент для функций умножения и деления (от 1 до 10)
-    param3 = randint(1, max_number2)
-    all_operations = {
-        '+': oper_sum(param1, param2),
-        '-': oper_subtr(param1, param2),
-        '*': oper_multiply(param1, param3),
-        '/': oper_division(param3),
-    }
-    return all_operations.get(current_oper)
+    expr_result = randint(MIN_NUMBER2, MAX_NUMBER3)  # Правильный ответ
+    return expr_result * param2, param2, expr_result
