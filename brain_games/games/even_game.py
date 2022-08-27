@@ -4,8 +4,8 @@ from random import randint
 
 # Правила игры
 RULES = 'Answer "yes" if the number is even, otherwise answer "no".'
-# Тип ответа (строка или число)
-ANSWER_TYPE = 'string'
+MIN_NUMBER = 0  # Минимальное значение числа
+MAX_NUMBER = 1000  # Максимальное значение числа
 
 
 def get_question_answer():
@@ -15,7 +15,7 @@ def get_question_answer():
     Returns:
         tuple : кортеж с текстом вопроса и правильным ответом
     """
-    number = randint(0, 1000)  # Случайное целое число от 0 до 1000
+    number = randint(MIN_NUMBER, MAX_NUMBER)  # Случайное целое число
     # Вычисляем правильный ответ
     correct_answer = 'yes' if number % 2 == 0 else 'no'
-    return (str(number), correct_answer)
+    return str(number), correct_answer
