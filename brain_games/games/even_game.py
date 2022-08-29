@@ -15,12 +15,12 @@ def get_question_answer():
     Returns:
         tuple : кортеж с текстом вопроса и правильным ответом
     """
-    number = randint(MIN_NUMBER, MAX_NUMBER)  # Случайное целое число
-    # Вычисляем правильный ответ
+    number = randint(MIN_NUMBER, MAX_NUMBER)
     correct_answer = 'yes' if is_even(number) else 'no'
     return str(number), correct_answer
 
-def is_even(number)
+
+def is_even(number):
     """
     Чётное ли число?.
 
