@@ -16,12 +16,12 @@ def get_question_answer():
     Returns:
         tuple : кортеж с текстом вопроса и правильным ответом
     """
-    question_number = randint(MIN_NUMBER, MAX_NUMBER)  # Случайное целое число
-    correct_answer = 'yes' if is_simple(question_number) else 'no'
+    question_number = randint(MIN_NUMBER, MAX_NUMBER)
+    correct_answer = 'yes' if is_prime(question_number) else 'no'
     return question_number, correct_answer
 
 
-def is_simple(number):
+def is_prime(number):
     """
     Проверить, простое ли число.
 
