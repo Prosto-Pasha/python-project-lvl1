@@ -1,7 +1,7 @@
 """Логика игры 'Калькулятор'."""
 
-from random import choice, randint
 import operator
+from random import choice, randint
 
 # Правила игры
 RULES = 'What is the result of the expression?'
@@ -16,9 +16,8 @@ def get_question_answer():
     Returns:
         tuple : кортеж с текстом вопроса и правильным ответом
     """
-    # Арифмитические операции игры
-    opers = ('+', '-', '*')
-    current_oper = choice(opers)
+    # Арифмитическая операция
+    current_oper = choice(('+', '-', '*'))
     param1 = randint(MIN_NUMBER, MAX_NUMBER)
     param2 = randint(MIN_NUMBER, MAX_NUMBER)
     if param1 < param2 and current_oper == '-':
