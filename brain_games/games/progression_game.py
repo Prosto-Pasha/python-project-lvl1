@@ -38,7 +38,7 @@ def get_question_answer():
     return question_text, correct_answer
 
 
-def get_progression(first_number, progression_length, step)
+def get_progression(first_number, progression_length, step):
     """
     Получить арифметическую прогрессию.
 
@@ -54,7 +54,7 @@ def get_progression(first_number, progression_length, step)
     return list(range(first_number, last_number, step))
 
 
-def get_progression_string(progression_list)
+def get_progression_string(progression_list):
     """
     Получить строку из списка.
 
