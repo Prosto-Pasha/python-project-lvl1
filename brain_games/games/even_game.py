@@ -17,5 +17,17 @@ def get_question_answer():
     """
     number = randint(MIN_NUMBER, MAX_NUMBER)  # Случайное целое число
     # Вычисляем правильный ответ
-    correct_answer = 'yes' if number % 2 == 0 else 'no'
+    correct_answer = 'yes' if is_even(number) else 'no'
     return str(number), correct_answer
+
+def is_even(number)
+    """
+    Чётное ли число?.
+
+    Parameters:
+        number :  integer : число.
+
+    Returns:
+        bool : булево : True - число чётное, False - число нечётное
+    """
+    return number % 2 == 0
