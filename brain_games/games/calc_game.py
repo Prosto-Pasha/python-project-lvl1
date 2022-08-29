@@ -5,10 +5,8 @@ import operator
 
 # Правила игры
 RULES = 'What is the result of the expression?'
-MAX_NUMBER1 = 100  # Максимальное значение числа
-MAX_NUMBER2 = 10  # Максимальное значение числа для умножения и деления
-MAX_NUMBER3 = 50  # Максимальное значение числа для деления
-MIN_NUMBER1 = 1
+MIN_NUMBER = 1  # Минимальное значение числа
+MAX_NUMBER = 100  # Максимальное значение числа
 
 
 def get_question_answer():
@@ -19,12 +17,18 @@ def get_question_answer():
         tuple : кортеж с текстом вопроса и правильным ответом
     """
     # Арифмитические операции игры
-    opers = ('+', '-', '*', '/')
-    # Арифмитические операции без деления, для успешного прохождения тестов :)
     opers = ('+', '-', '*')
     current_oper = choice(opers)
+    param1 = randint(MIN_NUMBER, MAX_NUMBER)
+    param2 = randint(MIN_NUMBER, MAX_NUMBER)
+    if param1 < param2 and current_oper == '-':
+        param1, param2 = param2, param1
     # Получим значения для текущей операции
-    first_number, second_number, correct_answer = get_numbers(current_oper)
+    first_number, second_number, correct_answer = get_numbers(
+        current_oper,
+        param1,
+        param2,
+    )
     first_number_str = str(first_number)
     second_number_str = str(second_number)
     question_text = '{0} {1} {2}'.format(
@@ -35,31 +39,22 @@ def get_question_answer():
     return question_text, str(correct_answer)
 
 
-def get_numbers(current_oper):
+def get_numbers(current_oper, param1, param2):
     """
     Получить параметры для текущей арифметической операции.
 
     Parameters:
         current_oper : строка, текущая арифметическая операция.
+        param1 : integer, первый параметр операции.
+        param2 : integer, второй параметр операции.
 
     Returns:
         tuple : кортеж с двумя параметрами
          и правильным ответом для текущей операции
     """
-    param1 = randint(MIN_NUMBER1, MAX_NUMBER1)
-    param2 = randint(MIN_NUMBER1, MAX_NUMBER1)
-    # Элемент для функций умножения и деления
-    param3 = randint(MIN_NUMBER1, MAX_NUMBER2)
-    if param1 < param2 and current_oper == '-':
-        param1, param2 = param2, param1
-    if current_oper == '/':
-        # Правильный ответ
-        expr_result = randint(MIN_NUMBER1, MAX_NUMBER3)
-        param1 = expr_result * param2
     all_operations = {
         '+': operator.add(param1, param2),
         '-': operator.sub(param1, param2),
-        '*': operator.mul(param1, param3),
-        '/': operator.truediv(param1, param2),
+        '*': operator.mul(param1, param2),
     }
     return param1, param2, all_operations.get(current_oper)
