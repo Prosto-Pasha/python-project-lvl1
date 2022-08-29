@@ -4,8 +4,8 @@ from random import randint
 
 # Правила игры
 RULES = 'What number is missing in the progression?'
-MIN_PROGRESSION_NUMBER = 5  # Минимальная длина прогрессии
-MAX_PROGRESSION_NUMBER = 10  # Максимальная длина прогрессии
+MIN_PROGRESSION_LENGTH = 5
+MAX_PROGRESSION_LENGTH = 10
 # Минимальное значение числа в прогрессии,
 # минимальный шаг прогрессии,
 # минимальное значение для поиска индекса правильного ответа
@@ -22,24 +22,46 @@ def get_question_answer():
         tuple : кортеж с двумя элементами.
             Строка с вопросом и число - правильный ответ.
     """
-    # Длина прогрессии
-    length_of_progression = randint(
-        MIN_PROGRESSION_NUMBER,
-        MAX_PROGRESSION_NUMBER,
+    progression_length = randint(
+        MIN_PROGRESSION_LENGTH,
+        MAX_PROGRESSION_LENGTH,
     )
-    # Первое число в прогрессии
     first_number = randint(MIN_NUMBER, MAX_NUMBER)
-    # Шаг прогрессии
     step = randint(MIN_NUMBER, MAX_STEP)
-    # Последнее число в прогрессии
-    last_number = first_number + length_of_progression * step
+    progression_list = get_progression(first_number, progression_length, step)
     # Индекс загадываемого числа
-    lucky_index = randint(MIN_NUMBER, length_of_progression) - 1
-    progression_list = list(range(first_number, last_number, step))
-    # Правильный ответ
-    correct_answer = progression_list[lucky_index]
+    lucky_index = randint(MIN_NUMBER, progression_length) - 1
+    correct_answer = str(progression_list[lucky_index])
     # Скрываем правильный ответ
     progression_list[lucky_index] = '..'
-    # Преобразуем список в строку
-    question_text = ' '.join(map(str, progression_list))
-    return question_text, str(correct_answer)
+    question_text = get_progression_string(progression_list)
+    return question_text, correct_answer
+
+
+def get_progression(first_number, progression_length, step)
+    """
+    Получить арифметическую прогрессию.
+
+    Parameters:
+        first_number : число, первый элемент прогрессии.
+        progression_length : число, количество элементов в прогрессии.
+        step : число, шаг прогрессии
+
+    Returns:
+        список : прогрессия
+    """
+    last_number = first_number + progression_length * step
+    return list(range(first_number, last_number, step))
+
+
+def get_progression_string(progression_list)
+    """
+    Получить строку из списка.
+
+    Parameters:
+        progression_list : список.
+
+    Returns:
+        string : строка
+    """
+    return ' '.join(map(str, progression_list))
