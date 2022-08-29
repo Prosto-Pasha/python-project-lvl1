@@ -15,10 +15,9 @@ def get_question_answer():
     Returns:
         tuple : кортеж с текстом вопроса и правильным ответом
     """
-    number1 = randint(MIN_NUMBER, MAX_NUMBER)  # Случайное целое число
-    number2 = randint(MIN_NUMBER, MAX_NUMBER)  # Случайное целое число
+    number1 = randint(MIN_NUMBER, MAX_NUMBER)
+    number2 = randint(MIN_NUMBER, MAX_NUMBER)
     question_text = '{0} {1}'.format(number1, number2)
-    # Вычисляем правильный ответ
     correct_answer = euqlid_gcd(number1, number2)
     return question_text, str(correct_answer)
 
