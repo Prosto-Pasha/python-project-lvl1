@@ -3,7 +3,7 @@
 # !/usr/bin/env python3
 
 from brain_games import engine
-from brain_games.games import calc_game as game
+from brain_games.games import calc as game
 
 
 def main():
