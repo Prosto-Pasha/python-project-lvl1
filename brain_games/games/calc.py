@@ -51,9 +51,9 @@ def get_numbers(current_oper, param1, param2):
         tuple : кортеж с двумя параметрами
          и правильным ответом для текущей операции
     """
-    all_operations = {
+    operation_to_result = {
         '+': operator.add(param1, param2),
         '-': operator.sub(param1, param2),
         '*': operator.mul(param1, param2),
     }
-    return param1, param2, all_operations.get(current_oper)
+    return param1, param2, operation_to_result.get(current_oper)
