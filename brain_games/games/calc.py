@@ -28,12 +28,10 @@ def get_question_answer():
         param1,
         param2,
     )
-    first_number_str = str(first_number)
-    second_number_str = str(second_number)
     question_text = '{0} {1} {2}'.format(
-        first_number_str,
+        first_number,
         current_oper,
-        second_number_str,
+        second_number,
     )
     return question_text, str(correct_answer)
 
