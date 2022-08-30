@@ -26,42 +26,47 @@ def get_question_answer():
         MIN_PROGRESSION_LENGTH,
         MAX_PROGRESSION_LENGTH,
     )
-    first_number = randint(MIN_NUMBER, MAX_NUMBER)
-    step = randint(MIN_NUMBER, MAX_STEP)
-    progression_list = get_progression(first_number, progression_length, step)
+    initial_term = randint(MIN_NUMBER, MAX_NUMBER)
+    common_difference = randint(MIN_NUMBER, MAX_STEP)
+    progression_list = get_progression(
+        initial_term,
+        progression_length,
+        common_difference,
+    )
     # Индекс загадываемого числа
     lucky_index = randint(MIN_NUMBER, progression_length) - 1
     correct_answer = str(progression_list[lucky_index])
-    # Скрываем правильный ответ
-    progression_list[lucky_index] = '..'
-    question_text = get_progression_string(progression_list)
+    question_text = stringify(progression_list, lucky_index)
     return question_text, correct_answer
 
 
-def get_progression(first_number, progression_length, step):
+def get_progression(initial_term, progression_length, common_difference):
     """
     Получить арифметическую прогрессию.
 
     Parameters:
-        first_number : число, первый элемент прогрессии.
+        initial_term : число, первый элемент прогрессии.
         progression_length : число, количество элементов в прогрессии.
-        step : число, шаг прогрессии
+        common_difference : число, шаг прогрессии
 
     Returns:
         список : прогрессия
     """
-    last_number = first_number + progression_length * step
-    return list(range(first_number, last_number, step))
+    last_number = initial_term + progression_length * common_difference
+    return list(range(initial_term, last_number, common_difference))
 
 
-def get_progression_string(progression_list):
+def stringify(progression_list, lucky_index):
     """
     Получить строку из списка.
 
     Parameters:
         progression_list : список.
+        lucky_index : integer, индекс элемента, который нужно скрыть.
 
     Returns:
         string : строка
     """
+    # Скрываем правильный ответ
+    progression_list[lucky_index] = '..'
     return ' '.join(map(str, progression_list))
